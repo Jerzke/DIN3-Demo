@@ -12,11 +12,20 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName='Home'>
-        <Drawer.Screen name='Home' component={HomeScreen} />
-        <Drawer.Screen name='Setting' component={SettingScreen} />
-        <Drawer.Screen name='Calendar' component={CalendarScreen} />
-        <Drawer.Screen name='History' component={HistoryScreen} />
+      <Drawer.Navigator 
+      screenOptions={{
+        drawerStyle: {
+          backgroundColor: '#C8A2C9',
+        },
+        headerStyle: {
+          backgroundColor: '#C8A2C9',
+        },
+      }}
+      initialRouteName='Home'>
+        <Drawer.Screen name='Home' component={HomeScreen}/>
+        <Drawer.Screen name='Setting' component={SettingScreen}/>
+        <Drawer.Screen name='Calendar' component={CalendarScreen}/>
+        <Drawer.Screen name='History' component={HistoryScreen}/>
       </Drawer.Navigator>
     </NavigationContainer>
 

@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar'
 const HomeScreen : React.FC = () => {
   return (
     <View style = {{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black'}}>
-        <Text style={{color: 'white', fontSize:30, fontWeight: 'bold'}}>DIN-3</Text>
+        <Text style={{color: 'white', fontSize:30, fontWeight: 'bold'}}>Hello home screen</Text>
         <StatusBar style="auto" />
     </View>
   )
