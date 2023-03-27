@@ -1,7 +1,8 @@
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItem, } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { Text } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import HomeScreen from './components/Home';
 import SettingScreen from './components/Settings';
@@ -28,33 +29,38 @@ function CustomDrawerItem({ label, to, navigation }) {
   };
   return (
     <DrawerItem
-      label={() => <Text style={{ color: '#9A0414' }}>{label}</Text>}
+      label={() => <Text style={{ color: '#E71D35' }}>{label}</Text>}
       onPress={onPress}
     />
   );
 }
 
-
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator 
-      drawerContent={(props) => <CustomDrawerContent {...props} />}
-      screenOptions={{
-        drawerStyle: {
-          backgroundColor: '#111111',
-        },
-        headerStyle: {
-          backgroundColor: '#9A0414',
-        },
-      }}
-      initialRouteName='Home'>
-        <Drawer.Screen name='Home' component={HomeScreen}/>
-        <Drawer.Screen name='Setting' component={SettingScreen}/>
-        <Drawer.Screen name='Calendar' component={CalendarScreen}/>
-        <Drawer.Screen name='History' component={HistoryScreen}/>
+      <Drawer.Navigator
+        drawerContent={(props) => (
+          <LinearGradient
+            colors={['#000000', '#E71D35']}
+            style={{ flex: 1 }}
+            start={{ x: 1, y: 0.2 }}
+            end={{x:1, y:1}}
+          >
+            <CustomDrawerContent {...props} />
+          </LinearGradient>
+        )}
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#E71D35',
+          },
+        }}
+        initialRouteName="Home"
+      >
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Setting" component={SettingScreen} />
+        <Drawer.Screen name="Calendar" component={CalendarScreen} />
+        <Drawer.Screen name="History" component={HistoryScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
-
   );
 }
