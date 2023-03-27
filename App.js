@@ -34,7 +34,7 @@ function CustomDrawerItem({ label, to, navigation, activeScreen }) {
       label={() => (
         <Text
           style={{
-            color: isActive ? "#FFFFFF" : "#E71D35",
+            color: isActive ? "#000000" : "#E71D35",
             fontSize: 20,
             padding: 10,
             fontWeight: isActive ? "bold" : "normal",
@@ -44,7 +44,7 @@ function CustomDrawerItem({ label, to, navigation, activeScreen }) {
         </Text>
       )}
       onPress={onPress}
-      style={{ backgroundColor: isActive ? "#E71D35" : "#FFFFFF" }}
+      style={{ backgroundColor: isActive ? "#E71D35" : "#000000" }}
     />
   );
 }
