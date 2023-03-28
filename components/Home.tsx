@@ -8,9 +8,32 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 function HomeScreen(){
   type TAnimationStyle = (value: number) => Animated.AnimateStyle<ViewStyle>;
   const width = Dimensions.get('window').width;
-  const itemSize = 80;
+  const itemSize = width / 4;
   const centerOffset = width / 2 - itemSize / 2;
 
+  const CAROUSEL_DATA = [
+    {
+      title: 'Item 1',
+      illustration: 'https://picsum.photos/id/1018/400/300',
+    },
+    {
+      title: 'Item 2',
+      illustration: 'https://picsum.photos/id/1015/400/300',
+    },
+    {
+      title: 'Item 3',
+      illustration: 'https://picsum.photos/id/1019/400/300',
+    },
+    {
+      title: 'Item 4',
+      illustration: 'https://picsum.photos/id/1020/400/300',
+    },
+    {
+      title: 'Item 5',
+      illustration: 'https://picsum.photos/id/1021/400/300',
+    }
+  ];
+  
   const animationStyle: TAnimationStyle = React.useCallback(
     (value: number) => {
       "worklet";
@@ -29,13 +52,13 @@ function HomeScreen(){
       const translateY = interpolate(
         value,
         [-1, -0.5, 0, 0.5, 1],
-        [25, 35, 40, 35, 25],
+        [20, 25, 30, 25, 20],
       );
 
       const scale = interpolate(
         value,
         [-1, -0.5, 0, 0.5, 1],
-        [0.75, 0.8, 1.2, 0.8, 0.75]
+        [0.6, 0.6, 1.2, 0.6, 0.6]
       );
 
       return {
@@ -54,7 +77,7 @@ function HomeScreen(){
   );
 
 return (
-  <View style={{ flex: 1 }}>
+  <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'black'}}>
     <Carousel
       width={itemSize}
       height={itemSize}
@@ -63,22 +86,23 @@ return (
         height: width / 2,
         backgroundColor: 'transparent',
       }}
+      
       loop
-      data={[...new Array(5).keys()]}
-      renderItem={({ index }) => (
+      data={CAROUSEL_DATA}
+      renderItem={({ item }) => (
         <TouchableWithoutFeedback
-          key={index}
+          key={item.title}
           onPress={() => {
-            console.log(index);
+            console.log(item.title);
           }}
           containerStyle={{ flex: 1 }}
           style={{ flex: 1 }}
         >
           <View
             style={{
-              backgroundColor: "black",
+              backgroundColor: '#1E1E1E',
               flex: 1,
-              borderRadius: 50,
+              borderRadius: itemSize / 2,
               justifyContent: "center",
               overflow: "hidden",
               alignItems: "center",
@@ -86,12 +110,13 @@ return (
           >
             <Text
               style={{
-                color: "white",
+                color: "red",
                 fontWeight: "600",
                 fontSize: 30,
               }}
             >
-              {index}
+              {item.title}
+              
             </Text>
           </View>
         </TouchableWithoutFeedback>
