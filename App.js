@@ -1,13 +1,12 @@
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import HomeScreen from './components/Home';
 import CalendarScreen from './components/Calendar';
 import HistoryScreen from './components/History';
-import { useWindowDimensions } from 'react-native';
 
 const Drawer = createDrawerNavigator();
 
@@ -52,7 +51,7 @@ function CustomDrawerItem({ label, to, navigation, activeScreen }) {
 
 export default function App() {
   const dimensions = useWindowDimensions();
-  const isLargeScreen = dimensions.width >= 1000;
+  const isLargeScreen = dimensions.width >= 768;
   return (
     <NavigationContainer>
       <Drawer.Navigator
