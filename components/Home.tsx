@@ -1,4 +1,4 @@
-import { View, Text, Dimensions, ViewStyle } from 'react-native'
+import { View, Text, Dimensions, ViewStyle, Image } from 'react-native'
 import React from 'react'
 import Animated, { interpolate } from 'react-native-reanimated';
 import Carousel from 'react-native-reanimated-carousel';
@@ -14,23 +14,23 @@ function HomeScreen(){
   const CAROUSEL_DATA = [
     {
       title: '1',
-      illustration: 'https://picsum.photos/id/1018/400/300',
+      illustration: require('./images/sprint1.png'),
     },
     {
       title: '2',
-      illustration: 'https://picsum.photos/id/1015/400/300',
+      illustration: require('./images/sprint1.png'),
     },
     {
       title: '3',
-      illustration: 'https://picsum.photos/id/1019/400/300',
+      illustration: require('./images/sprint1.png'),
     },
     {
       title: '4',
-      illustration: 'https://picsum.photos/id/1020/400/300',
+      illustration: require('./images/sprint1.png'),
     },
     {
       title: '5',
-      illustration: 'https://picsum.photos/id/1021/400/300',
+      illustration: require('./images/sprint1.png'),
     }
   ];
   
@@ -108,6 +108,13 @@ return (
               alignItems: "center",
             }}
           >
+            <Image source={item.illustration} 
+              style = {{
+                position: "absolute",
+                width: "100%",
+                height: "100%"
+              }}
+            />
             <Text
               style={{
                 color: "#E71D35",
@@ -116,7 +123,6 @@ return (
               }}
             >
               {item.title}
-              
             </Text>
           </View>
         </TouchableWithoutFeedback>
