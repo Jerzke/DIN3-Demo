@@ -69,9 +69,7 @@ export default function App() {
         screenOptions={{
           drawerType: isLargeScreen ? 'permanent' : 'back',
           drawerStyle: isLargeScreen ? null : { width: '60%'},
-          headerStyle: {
-          backgroundColor: '#E71D35',
-          },
+          headerStyle: { backgroundColor: '#E71D35',},
           headerTintColor: '#000000',
           swipeEnabled: true,
           drawerType: 'front',

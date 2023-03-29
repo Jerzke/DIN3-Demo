@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
-const HistoryScreen: React.FC = () => {
-  return (
-    <View style = {{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black'}}>
-        <Text style={{color: 'white', fontSize:30, fontWeight: 'bold'}}>Hello history screen</Text>
-    </View>
-  );
-};
+interface Props {}
+interface State {}
 
-export default HistoryScreen;
+export default class HistoryContainer extends Component<Props, State> {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'black', padding: 50, }}>
+        <Text style={{ color: 'white', fontSize: 25, fontWeight: 'bold', }}>Eventually exercise history will be here</Text>
+      </View>
+    );
+  }
+}

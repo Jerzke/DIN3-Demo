@@ -13,23 +13,23 @@ function HomeScreen(){
 
   const CAROUSEL_DATA = [
     {
-      title: 'Item 1',
+      title: '1',
       illustration: 'https://picsum.photos/id/1018/400/300',
     },
     {
-      title: 'Item 2',
+      title: '2',
       illustration: 'https://picsum.photos/id/1015/400/300',
     },
     {
-      title: 'Item 3',
+      title: '3',
       illustration: 'https://picsum.photos/id/1019/400/300',
     },
     {
-      title: 'Item 4',
+      title: '4',
       illustration: 'https://picsum.photos/id/1020/400/300',
     },
     {
-      title: 'Item 5',
+      title: '5',
       illustration: 'https://picsum.photos/id/1021/400/300',
     }
   ];
@@ -100,7 +100,7 @@ return (
         >
           <View
             style={{
-              backgroundColor: '#1E1E1E',
+              backgroundColor: '#383838',
               flex: 1,
               borderRadius: itemSize / 2,
               justifyContent: "center",
@@ -110,7 +110,7 @@ return (
           >
             <Text
               style={{
-                color: "red",
+                color: "#E71D35",
                 fontWeight: "600",
                 fontSize: 30,
               }}
