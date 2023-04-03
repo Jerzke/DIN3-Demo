@@ -14,6 +14,7 @@ const Drawer = createDrawerNavigator();
 function CustomDrawerContent(props) {
   const { navigation, state } = props;
   const activeScreen = state.routeNames[state.index];
+  
   return (
     <DrawerContentScrollView {...props}>
       <CustomDrawerItem label="Home" to="Home" navigation={navigation} activeScreen={activeScreen} />
