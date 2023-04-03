@@ -43,8 +43,12 @@
   .react-calendar__navigation {
     display: flex;
     height: 44px;
-    margin-bottom: 1em;
+    /*margin-bottom: 1em;*/
     background-image: linear-gradient(rgb(175, 23, 23), rgb(231, 29, 53));
+  }
+
+  .react-calendar__viewContainer {
+    background-image: linear-gradient(rgb(135, 135, 135),rgb(235, 235, 235) );
   }
   
   .react-calendar__navigation button {
