@@ -16,8 +16,44 @@ const CalendarScreen: React.FC = () => {
   //<Calendar  onChange={onChange} value={date}/*This will always set the current day by default*//>
   return (
     <View style = {{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black'}}>
-        <Text style={{color: 'white', fontSize:30, fontWeight: 'bold'}}>Pick a date to see trainning data:</Text>
+        <Text style={{color: 'white', fontSize:15, fontWeight: 'bold', marginTop:60, marginBottom: 20}}>Pick a date to see trainning data:</Text>
         <Calendar 
+        style={{
+          marginBottom: 20,
+          borderWidth: 1,
+          borderColor: 'gray',
+          height: 360,
+          width: 350,
+          backgroundColor: 'linear-gradient(to bottom, #57B2FF, #0086F8)',
+          
+        }}
+        theme={{
+        backgroundColor: '#ffffff',
+        calendarBackground: 'linear-gradient(to bottom, rgb(56,56,56), rgb(100,100,100))',
+        textSectionTitleColor: '#ffffff',
+        textSectionTitleDisabledColor: '#d9e1e8',
+        selectedDayBackgroundColor: '#00adf5',
+        selectedDayTextColor: '#ffffff',
+        todayTextColor: 'rgb(231, 29, 53)',
+        dayTextColor: '#d9e1e8',
+        textDisabledColor: '#494e52',
+        dotColor: '#00adf5',
+        selectedDotColor: '#ffffff',
+        arrowColor: 'orange',
+        disabledArrowColor: '#d9e1e8',
+        monthTextColor: '#ffffff',
+        indicatorColor: 'blue',
+        textDayFontFamily: 'monospace',
+        textMonthFontFamily: 'monospace',
+        textDayHeaderFontFamily: 'monospace',
+        textDayFontWeight: '300',
+        textMonthFontWeight: 'bold',
+        textDayHeaderFontWeight: '300',
+        textDayFontSize: 16,
+        textMonthFontSize: 16,
+        textDayHeaderFontSize: 16,
+      }}
+        
         onDayPress={day => {
           console.log('selected day', day);
         }}
