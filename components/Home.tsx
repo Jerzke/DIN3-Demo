@@ -14,23 +14,23 @@ function HomeScreen(){
   const CAROUSEL_DATA = [
     {
       title: 'Hurdles',
-      illustration: require('./images/sprint1.png'),
+      illustration: require('./images/hurdles.png'),
     },
     {
       title: 'Sprints',
-      illustration: require('./images/sprint1.png'),
+      illustration: require('./images/sprint.png'),
     },
     {
       title: 'Pole vault',
-      illustration: require('./images/sprint1.png'),
+      illustration: require('./images/polevault.png'),
     },
     {
-      title: '4',
-      illustration: require('./images/sprint1.png'),
+      title: 'Long jump',
+      illustration: require('./images/longjump.png'),
     },
     {
-      title: '5',
-      illustration: require('./images/sprint1.png'),
+      title: 'High jump',
+      illustration: require('./images/highjump.png'),
     }
   ];
   
@@ -117,9 +117,10 @@ return (
             />
             <Text
               style={{
-                color: "#E71D35",
+                color: "#ffffff",
+                opacity: 0.75,
                 fontWeight: "600",
-                fontSize: 30,
+                fontSize: 20,
               }}
             >
               {item.title}
