@@ -13,15 +13,15 @@ function HomeScreen(){
 
   const CAROUSEL_DATA = [
     {
-      title: '1',
+      title: 'Hurdles',
       illustration: require('./images/sprint1.png'),
     },
     {
-      title: '2',
+      title: 'Sprints',
       illustration: require('./images/sprint1.png'),
     },
     {
-      title: '3',
+      title: 'Pole vault',
       illustration: require('./images/sprint1.png'),
     },
     {
