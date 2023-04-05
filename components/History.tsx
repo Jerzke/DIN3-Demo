@@ -8,6 +8,8 @@ import {
   VictoryTooltip,
   VictoryVoronoiContainer,
   VictoryAxis,
+  VictoryZoomContainer,
+  createContainer,
 } from "victory-native";
 
 interface Props {}
@@ -20,16 +22,20 @@ export default function HistoryContainer(props: Props) {
       setData(parsedData);
     });
   }, []);
+  const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi");
+
 
   return (
     <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'black', padding: 50, }}>
       <VictoryChart
         theme={VictoryTheme.material}
         containerComponent={
-          <VictoryVoronoiContainer
+          <VictoryZoomVoronoiContainer
+          //idk why this is redlined works fine on app?
             labels={({ datum }) =>
               `Distance (m): ${datum.distance}\nSpeed (m/s): ${datum.speed}\nTimestamp (s): ${(datum.timestamp - data[0].timestamp).toFixed(1)}`
             }
+            
           />
         }
       >
@@ -58,6 +64,7 @@ export default function HistoryContainer(props: Props) {
             }
           />
         }
+      
       >
         <VictoryAxis label="Distance" />
         <VictoryAxis label="Speed" dependentAxis />

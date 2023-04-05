@@ -1,6 +1,6 @@
-import * as d3 from "d3";
+import * as d3 from 'd3';
 
-const dataUrl = "http://192.168.253.216:3001/Sprint/a_40m_2.csv";
+const dataUrl = "https://din3-api-37sqsczq3q-ew.a.run.app/Sprint/d_60m_2.csv";
 
 export const FetchData = async () => {
   const response = await fetch(dataUrl);
