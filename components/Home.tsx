@@ -5,7 +5,7 @@ import Carousel from 'react-native-reanimated-carousel';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 
-function HomeScreen(){
+function HomeScreen({ navigation}){
   type TAnimationStyle = (value: number) => Animated.AnimateStyle<ViewStyle>;
   const width = Dimensions.get('window').width;
   const itemSize = width / 4;
@@ -58,7 +58,7 @@ function HomeScreen(){
       const scale = interpolate(
         value,
         [-1, -0.5, 0, 0.5, 1],
-        [0.6, 0.6, 1.2, 0.6, 0.6]
+        [0.6, 0.6, 1.1, 0.6, 0.6]
       );
 
       return {
@@ -93,18 +93,16 @@ return (
         <TouchableWithoutFeedback
           key={item.title}
           onPress={() => {
-            console.log(item.title);
+            navigation.navigate('Test', {title: item.title});
           }}
           containerStyle={{ flex: 1 }}
           style={{ flex: 1 }}
         >
           <View
             style={{
-              backgroundColor: '#383838',
+              backgroundColor: 'transparent',
               flex: 1,
-              borderRadius: itemSize / 2,
               justifyContent: "center",
-              overflow: "hidden",
               alignItems: "center",
             }}
           >
@@ -112,7 +110,8 @@ return (
               style = {{
                 position: "absolute",
                 width: "100%",
-                height: "100%"
+                height: "100%",
+                borderRadius: itemSize / 2
               }}
             />
             <Text
