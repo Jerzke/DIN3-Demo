@@ -16,13 +16,13 @@ const CalendarScreen: React.FC = () => {
   //<Calendar  onChange={onChange} value={date}/*This will always set the current day by default*//>
   return (
     <View style = {{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black'}}>
-        <Text style={{color: 'white', fontSize:15, fontWeight: 'bold', marginTop:60, marginBottom: 20}}>Pick a date to see trainning data:</Text>
+        <Text style={{color: 'white', fontSize:15, fontWeight: 'bold', marginTop:60, marginBottom: 20}}>Pick a date to see training data:</Text>
         <Calendar 
         style={{
           marginBottom: 20,
           borderWidth: 1,
-          borderColor: 'gray',
-          height: 360,
+          borderColor: 'rgb(231, 29, 53)',
+          height: 370,
           width: 350,
           backgroundColor: 'linear-gradient(to bottom, #57B2FF, #0086F8)',
           
