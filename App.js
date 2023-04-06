@@ -20,7 +20,6 @@ function CustomDrawerContent(props) {
       <CustomDrawerItem label="Home" to="Home" navigation={navigation} activeScreen={activeScreen} />
       <CustomDrawerItem label="Calendar" to="Calendar" navigation={navigation} activeScreen={activeScreen} />
       <CustomDrawerItem label="History" to="History" navigation={navigation} activeScreen={activeScreen} />
-      <CustomDrawerItem label="Test" to="Test" navigation={navigation} activeScreen={activeScreen} />
     </DrawerContentScrollView>
   );
 }

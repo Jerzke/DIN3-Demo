@@ -22,6 +22,7 @@ const CalendarScreen: React.FC = () => {
     <View style = {{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black'}}>
       <ScrollView>
         <Text style={{color: 'white', fontSize:15, fontWeight: 'bold', marginTop:60, marginBottom: 20}}>Pick a date to see trainning data:</Text>
+
         <Calendar 
 
         onDayPress={onDayPress}
@@ -29,8 +30,8 @@ const CalendarScreen: React.FC = () => {
         style={{
           marginBottom: 20,
           borderWidth: 1,
-          borderColor: 'gray',
-          height: 360,
+          borderColor: 'rgb(231, 29, 53)',
+          height: 370,
           width: 350,
           backgroundColor: 'linear-gradient(to bottom, #57B2FF, #0086F8)',
           
