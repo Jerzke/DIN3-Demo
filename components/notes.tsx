@@ -67,20 +67,20 @@ const NoteTaker: React.FC<{ selectedDate: string }> = ({ selectedDate }) => {
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold', marginTop: 20, marginBottom: 10 }}>
+      <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold', marginTop: 1, marginBottom: 10 }}>
         Write a note:
       </Text>
       <TextInput
         style={{
           height: 120,
           width: 280,
-          borderColor: 'gray',
+          borderColor: 'rgb(56, 56, 56)',
           borderWidth: 1,
           borderRadius: 10,
           paddingHorizontal: 10,
           paddingTop: 10,
           textAlignVertical: 'top',
-          backgroundColor: 'white',
+          backgroundColor: 'rgb(56, 56, 56)',
         }}
         multiline={true}
         numberOfLines={4}
@@ -90,8 +90,8 @@ const NoteTaker: React.FC<{ selectedDate: string }> = ({ selectedDate }) => {
       <TouchableOpacity
         onPress={storeNote}
         style={{
-          marginTop: 20,
-          backgroundColor: 'blue',
+          marginTop: 15,
+          backgroundColor: 'rgb(231, 29, 53)',
           paddingVertical: 10,
           paddingHorizontal: 20,
           borderRadius: 10,
@@ -110,7 +110,7 @@ const NoteTaker: React.FC<{ selectedDate: string }> = ({ selectedDate }) => {
                 onPress={() => deleteNote(index)}
                 style={{
                   marginTop: 10,
-                  backgroundColor: 'red',
+                  backgroundColor: 'rgb(231, 29, 53)',
                   paddingVertical: 10,
                   paddingHorizontal: 20,
                   borderRadius: 10,
