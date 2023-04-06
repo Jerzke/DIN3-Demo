@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import NoteTaker from './notes';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 
@@ -19,6 +20,7 @@ const CalendarScreen: React.FC = () => {
 
   return (
     <View style = {{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black'}}>
+      <ScrollView>
         <Text style={{color: 'white', fontSize:15, fontWeight: 'bold', marginTop:60, marginBottom: 20}}>Pick a date to see trainning data:</Text>
         <Calendar 
 
@@ -66,8 +68,7 @@ const CalendarScreen: React.FC = () => {
 
       <NoteTaker selectedDate={selectedDate}/>
 
-      
-           
+      </ScrollView>      
     </View>
   );
 };
