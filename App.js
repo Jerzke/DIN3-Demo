@@ -75,7 +75,7 @@ export default function App() {
           headerTintColor: '#000000',
           swipeEnabled: true,
           drawerType: 'front',
-          swipeEdgeWidth: 65,
+          swipeEdgeWidth: 20,
         }}
         initialRouteName="Home"
       >
