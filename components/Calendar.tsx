@@ -16,14 +16,12 @@ const CalendarScreen: React.FC = () => {
 
 
   return (
+    <ScrollView>
     <View style = {{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black'}}>
-      <ScrollView>
         <Text style={{color: 'white', fontSize:15, fontWeight: 'bold', marginTop:60, marginBottom: 20}}>Pick a date to see trainning data:</Text>
 
         <Calendar 
-
         onDayPress={onDayPress}
-
         style={{
           marginBottom: 20,
           borderWidth: 1,
@@ -59,15 +57,10 @@ const CalendarScreen: React.FC = () => {
         textMonthFontSize: 16,
         textDayHeaderFontSize: 16,
       }}
-      
       />
-
-  
-
       <NoteTaker selectedDate={selectedDate}/>
-
-      </ScrollView>      
     </View>
+    </ScrollView>
   );
 };
 
