@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, Button } from "react-native";
 import { FetchID } from "./IDFetch";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 export default function TestContainer({ route }) {
   const { title } = route.params;
@@ -13,6 +14,7 @@ export default function TestContainer({ route }) {
   }, []);
 
   return (
+    <ScrollView>
     <View
       style={{
         flex: 1,
@@ -32,7 +34,7 @@ export default function TestContainer({ route }) {
           padding: 10,
         }}
       >
-        Eventually exercise {title}{" "}
+        {title}
       </Text>
       <View
         style={{
@@ -42,9 +44,22 @@ export default function TestContainer({ route }) {
         }}
       >
         {links.map((link) => (
-          <Button key={link} title={link} onPress={() => console.log(link)} />
+          <TouchableOpacity
+            key={link}
+            onPress={() => console.log(link)}
+            style={{
+              backgroundColor: "#E71D35",
+              borderRadius: 8,
+              padding: 10,
+              margin: 10,
+              minWidth: 100,
+            }}
+          >
+            <Text style={{ color: "white", textAlign: "center" }}>{link}</Text>
+          </TouchableOpacity>
         ))}
       </View>
     </View>
+    </ScrollView>
   );
 }
