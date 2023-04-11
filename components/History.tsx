@@ -35,26 +35,23 @@ export default function HistoryContainer(props: Props) {
             labels={({ datum }) =>
               `Distance (m): ${datum.distance}\nSpeed (m/s): ${datum.speed}\nTimestamp (s): ${(datum.timestamp - data[0].timestamp).toFixed(1)}`
             }
-            
+            labelComponent={<VictoryTooltip style={{ fill: 'white' }} flyoutStyle={{ fill: 'black', stroke: '#7d7d7d', strokeWidth: 2,}} />}
           />
         }
       >
-        <VictoryAxis label="Distance" />
-        <VictoryAxis label="Speed" dependentAxis />
+        <VictoryAxis label="Distance" 
+        style={{ grid: { stroke: '#7d7d7d', strokeWidth: 1 }, }} />
+        <VictoryAxis label="Speed" dependentAxis 
+        style={{ grid: { stroke: '#7d7d7d', strokeWidth: 1 }, }} />
+
         <VictoryLine
           y="speed"
           x="distance"
           data={data}
-          style={{ data: { stroke: "#c43a31", strokeWidth: 4, strokeLinecap: "round" } }}
-          labelComponent={
-            <VictoryTooltip
-              cornerRadius={0}
-              flyoutStyle={{ stroke: "tomato", strokeWidth: 2 }}
-              style={{ fontSize: 50 }}
-            />
-          }
-        />
+          style={{ data: { stroke: "rgb(231, 29, 53)", strokeWidth: 2, strokeLinecap: "round" } }}
+          />
       </VictoryChart>
+
       <VictoryChart
         theme={VictoryTheme.material}
         containerComponent={
@@ -62,24 +59,21 @@ export default function HistoryContainer(props: Props) {
             labels={({ datum }) =>
               `Timestamp (s): ${datum.timestamp}\nDistance (m): ${datum.distance}`
             }
+            labelComponent={<VictoryTooltip style={{ fill: 'white' }} flyoutStyle={{ fill: 'black', stroke: '#7d7d7d', strokeWidth: 2, }} />}
           />
         }
       
       >
-        <VictoryAxis label="Distance" />
-        <VictoryAxis label="Speed" dependentAxis />
+        <VictoryAxis label="Distance" 
+        style={{ grid: { stroke: '#7d7d7d', strokeWidth: 1 }, }} />
+        <VictoryAxis label="Speed" dependentAxis 
+        style={{ grid: { stroke: '#7d7d7d', strokeWidth: 1 }, }} />
+
         <VictoryLine
           y="acceleration"
           x="timestamp"
           data={data}
-          style={{ data: { stroke: "#c43a31", strokeWidth: 4, strokeLinecap: "round" } }}
-          labelComponent={
-            <VictoryTooltip
-              cornerRadius={0}
-              flyoutStyle={{ stroke: "tomato", strokeWidth: 2 }}
-              style={{ fontSize: 10 }}
-            />
-          }
+          style={{ data: { stroke: "rgb(231, 29, 53)", strokeWidth: 2, strokeLinecap: "round" } }}
         />
       </VictoryChart>
     </View>

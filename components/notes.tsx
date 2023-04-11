@@ -75,6 +75,7 @@ const NoteTaker: React.FC<{ selectedDate: string }> = ({ selectedDate }) => {
           height: 120,
           width: 280,
           borderColor: 'rgb(56, 56, 56)',
+          color: 'white',
           borderWidth: 1,
           borderRadius: 10,
           paddingHorizontal: 10,
@@ -103,7 +104,7 @@ const NoteTaker: React.FC<{ selectedDate: string }> = ({ selectedDate }) => {
         <View style={{ marginTop: 20, }}>
           <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold', marginBottom: 10,  }}>Existing Notes:</Text>
           {existingNote.map((item, index) => (
-            <View key={index} style={{ borderWidth: 1, borderColor: 'gray', borderRadius: 10, padding: 10, marginBottom: 10 }}>
+            <View key={index} style={{ borderWidth: 1, borderColor: 'rgb(231, 29, 53)', borderRadius: 10, padding: 15, marginBottom: 10 }}>
               <Text style={{ color: 'white', fontWeight: 'bold', marginBottom: 10 }}>{item.date}</Text>
               <Text style={{ color: 'white' }}>{item.text}</Text>
               <TouchableOpacity
@@ -112,7 +113,7 @@ const NoteTaker: React.FC<{ selectedDate: string }> = ({ selectedDate }) => {
                   marginTop: 10,
                   backgroundColor: 'rgb(231, 29, 53)',
                   paddingVertical: 10,
-                  paddingHorizontal: 20,
+                  paddingHorizontal: 30,
                   borderRadius: 10,
                 }}
               >
