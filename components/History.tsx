@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
-import { View, Text } from 'react-native';
+import { View, Text } from "react-native";
 import { FetchData } from "./DataFetch";
 import {
   VictoryChart,
@@ -11,6 +11,7 @@ import {
   VictoryZoomContainer,
   createContainer,
 } from "victory-native";
+import { FetchID } from "./IDFetch";
 
 interface Props {}
 
@@ -23,19 +24,31 @@ export default function HistoryContainer(props: Props) {
     });
   }, []);
   const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi");
-
+  FetchID().then((links) => {
+    console.log(links);
+  });
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'black', padding: 50, }}>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        backgroundColor: "black",
+        padding: 50,
+      }}
+    >
       <VictoryChart
         theme={VictoryTheme.material}
         containerComponent={
           <VictoryZoomVoronoiContainer
-          //idk why this is redlined works fine on app?
+            //idk why this is redlined works fine on app?
             labels={({ datum }) =>
-              `Distance (m): ${datum.distance}\nSpeed (m/s): ${datum.speed}\nTimestamp (s): ${(datum.timestamp - data[0].timestamp).toFixed(1)}`
+              `Distance (m): ${datum.distance}\nSpeed (m/s): ${
+                datum.speed
+              }\nTimestamp (s): ${(datum.timestamp - data[0].timestamp).toFixed(
+                1
+              )}`
             }
-            
           />
         }
       >
@@ -45,7 +58,9 @@ export default function HistoryContainer(props: Props) {
           y="speed"
           x="distance"
           data={data}
-          style={{ data: { stroke: "#c43a31", strokeWidth: 4, strokeLinecap: "round" } }}
+          style={{
+            data: { stroke: "#c43a31", strokeWidth: 4, strokeLinecap: "round" },
+          }}
           labelComponent={
             <VictoryTooltip
               cornerRadius={0}
@@ -64,7 +79,6 @@ export default function HistoryContainer(props: Props) {
             }
           />
         }
-      
       >
         <VictoryAxis label="Distance" />
         <VictoryAxis label="Speed" dependentAxis />
@@ -72,7 +86,9 @@ export default function HistoryContainer(props: Props) {
           y="acceleration"
           x="timestamp"
           data={data}
-          style={{ data: { stroke: "#c43a31", strokeWidth: 4, strokeLinecap: "round" } }}
+          style={{
+            data: { stroke: "#c43a31", strokeWidth: 4, strokeLinecap: "round" },
+          }}
           labelComponent={
             <VictoryTooltip
               cornerRadius={0}
