@@ -11,7 +11,7 @@ const CalendarScreen: React.FC = () => {
 
   const onDayPress = (day) => {
     setSelectedDate(day.dateString);
-    console.log(day)
+    console.log(day);
   };
 
 
@@ -21,6 +21,9 @@ const CalendarScreen: React.FC = () => {
         <Text style={{color: 'white', fontSize:15, fontWeight: 'bold', marginTop:60, marginBottom: 20}}>Pick a date to see trainning data:</Text>
 
         <Calendar 
+        markedDates={{
+          [selectedDate]: {selected: true, marked: false, selectedColor: 'orange'},
+        }}
         onDayPress={onDayPress}
         style={{
           marginBottom: 20,
@@ -58,6 +61,7 @@ const CalendarScreen: React.FC = () => {
         textDayHeaderFontSize: 16,
       }}
       />
+      <Text style={{color: 'white', fontSize:15, fontWeight: 'bold', marginTop:40, marginBottom: 40}}>Selected date is: {selectedDate}</Text>
       <NoteTaker selectedDate={selectedDate}/>
     </View>
     </ScrollView>
