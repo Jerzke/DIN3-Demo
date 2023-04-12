@@ -11,7 +11,6 @@ import {
   VictoryZoomContainer,
   createContainer,
 } from "victory-native";
-import { FetchID } from "./IDFetch";
 
 interface Props {}
 
@@ -24,9 +23,6 @@ export default function HistoryContainer(props: Props) {
     });
   }, []);
   const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi");
-  FetchID().then((links) => {
-    console.log(links);
-  });
 
   return (
     <View
@@ -49,27 +45,43 @@ export default function HistoryContainer(props: Props) {
                 1
               )}`
             }
+            labelComponent={
+              <VictoryTooltip
+                style={{ fill: "white" }}
+                flyoutStyle={{
+                  fill: "black",
+                  stroke: "#7d7d7d",
+                  strokeWidth: 2,
+                }}
+              />
+            }
           />
         }
       >
-        <VictoryAxis label="Distance" />
-        <VictoryAxis label="Speed" dependentAxis />
+        <VictoryAxis
+          label="Distance"
+          style={{ grid: { stroke: "#7d7d7d", strokeWidth: 1 } }}
+        />
+        <VictoryAxis
+          label="Speed"
+          dependentAxis
+          style={{ grid: { stroke: "#7d7d7d", strokeWidth: 1 } }}
+        />
+
         <VictoryLine
           y="speed"
           x="distance"
           data={data}
           style={{
-            data: { stroke: "#c43a31", strokeWidth: 4, strokeLinecap: "round" },
+            data: {
+              stroke: "rgb(231, 29, 53)",
+              strokeWidth: 2,
+              strokeLinecap: "round",
+            },
           }}
-          labelComponent={
-            <VictoryTooltip
-              cornerRadius={0}
-              flyoutStyle={{ stroke: "tomato", strokeWidth: 2 }}
-              style={{ fontSize: 50 }}
-            />
-          }
         />
       </VictoryChart>
+
       <VictoryChart
         theme={VictoryTheme.material}
         containerComponent={
@@ -77,25 +89,40 @@ export default function HistoryContainer(props: Props) {
             labels={({ datum }) =>
               `Timestamp (s): ${datum.timestamp}\nDistance (m): ${datum.distance}`
             }
+            labelComponent={
+              <VictoryTooltip
+                style={{ fill: "white" }}
+                flyoutStyle={{
+                  fill: "black",
+                  stroke: "#7d7d7d",
+                  strokeWidth: 2,
+                }}
+              />
+            }
           />
         }
       >
-        <VictoryAxis label="Distance" />
-        <VictoryAxis label="Speed" dependentAxis />
+        <VictoryAxis
+          label="Distance"
+          style={{ grid: { stroke: "#7d7d7d", strokeWidth: 1 } }}
+        />
+        <VictoryAxis
+          label="Speed"
+          dependentAxis
+          style={{ grid: { stroke: "#7d7d7d", strokeWidth: 1 } }}
+        />
+
         <VictoryLine
           y="acceleration"
           x="timestamp"
           data={data}
           style={{
-            data: { stroke: "#c43a31", strokeWidth: 4, strokeLinecap: "round" },
+            data: {
+              stroke: "rgb(231, 29, 53)",
+              strokeWidth: 2,
+              strokeLinecap: "round",
+            },
           }}
-          labelComponent={
-            <VictoryTooltip
-              cornerRadius={0}
-              flyoutStyle={{ stroke: "tomato", strokeWidth: 2 }}
-              style={{ fontSize: 10 }}
-            />
-          }
         />
       </VictoryChart>
     </View>
