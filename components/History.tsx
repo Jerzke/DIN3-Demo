@@ -16,14 +16,15 @@ interface Props {}
 
 export default function HistoryContainer({route}, props: Props) {
   const [data, setData] = useState([]);
-  const { fileID } = route.params;
+  const { test } = route.params;
 
   
   useEffect(() => {
-    FetchData(fileID).then((parsedData) => {
+    FetchData(test).then((parsedData) => {
       setData(parsedData);
+      console.log(test);
     });
-  }, []);
+  }, [test]);
   const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi");
 
   return (

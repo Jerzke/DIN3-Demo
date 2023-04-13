@@ -14,10 +14,6 @@ export default function TestContainer({ navigation, route }) {
     });
   }, [title]);
 
-  const fetchData = async (fileID) => {
-    const data = await FetchData(fileID);
-    console.log(data);
-  };
 
   return (
     <ScrollView
@@ -57,8 +53,8 @@ export default function TestContainer({ navigation, route }) {
             <TouchableOpacity
               key={link}
               onPress={() =>{
-                fetchData(link);
-                navigation.navigate("History",{itemID: link})
+                console.log(link)
+                navigation.navigate("History",{test: link})
               }} // pass the link to fetchData function
               style={{
                 backgroundColor: "#E71D35",
