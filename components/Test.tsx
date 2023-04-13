@@ -9,10 +9,10 @@ export default function TestContainer({ route }) {
   const [links, setLinks] = React.useState([]);
 
   React.useEffect(() => {
-    FetchID().then((data) => {
+    FetchID(title).then((data) => {
       setLinks(data);
     });
-  }, []);
+  }, [title]);
 
   const fetchData = async (fileID) => {
     const data = await FetchData(fileID);
