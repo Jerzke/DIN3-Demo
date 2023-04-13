@@ -4,7 +4,7 @@ import { FetchID } from "./IDFetch";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { FetchData } from "./DataFetch"; //
 
-export default function TestContainer({ route }) {
+export default function TestContainer({ navigation, route }) {
   const { title } = route.params;
   const [links, setLinks] = React.useState([]);
 
@@ -20,7 +20,11 @@ export default function TestContainer({ route }) {
   };
 
   return (
-    <ScrollView>
+    <ScrollView
+      style={{
+        backgroundColor: "black"
+      }}
+    >
       <View
         style={{
           flex: 1,
@@ -52,7 +56,10 @@ export default function TestContainer({ route }) {
           {links.map((link) => (
             <TouchableOpacity
               key={link}
-              onPress={() => fetchData(link)} // pass the link to fetchData function
+              onPress={() =>{
+                fetchData(link);
+                navigation.navigate("History",{itemID: link})
+              }} // pass the link to fetchData function
               style={{
                 backgroundColor: "#E71D35",
                 borderRadius: 8,

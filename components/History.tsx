@@ -14,11 +14,13 @@ import {
 
 interface Props {}
 
-export default function HistoryContainer(props: Props) {
+export default function HistoryContainer({route}, props: Props) {
   const [data, setData] = useState([]);
+  const { fileID } = route.params;
 
+  
   useEffect(() => {
-    FetchData().then((parsedData) => {
+    FetchData(fileID).then((parsedData) => {
       setData(parsedData);
     });
   }, []);
