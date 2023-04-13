@@ -1,9 +1,9 @@
 import * as d3 from "d3";
 
-const dataUrl = "https://din3-api-37sqsczq3q-ew.a.run.app/Sprint/";
+const dataUrl = "https://din3-api-37sqsczq3q-ew.a.run.app/";
 
-export const FetchData = async (fileID) => {
-  const response = await fetch(`${dataUrl}${fileID}`);
+export const FetchData = async (fileID, title) => {
+  const response = await fetch(`${dataUrl}${title}/${fileID}`);
   const rawData = await response.text();
   const parser = d3.dsvFormat(";");
   const parsedData = parser.parse(rawData, (d) => ({
