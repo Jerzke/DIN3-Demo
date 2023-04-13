@@ -18,11 +18,11 @@ const CalendarScreen: React.FC = () => {
   return (
     <ScrollView>
     <View style = {{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'black'}}>
-        <Text style={{color: 'white', fontSize:15, fontWeight: 'bold', marginTop:60, marginBottom: 20}}>Pick a date to see trainning data:</Text>
+        <Text style={{color: 'white', fontSize:15, fontWeight: 'bold', marginTop:60, marginBottom: 20}}>Pick a date to see training data:</Text>
 
         <Calendar 
         markedDates={{
-          [selectedDate]: {selected: true, marked: false, selectedColor: 'orange'},
+          [selectedDate]: {selected: true, marked: false, selectedColor: 'rgb(231, 29, 53)'},
         }}
         onDayPress={onDayPress}
         style={{
@@ -46,7 +46,7 @@ const CalendarScreen: React.FC = () => {
         textDisabledColor: '#494e52',
         dotColor: '#00adf5',
         selectedDotColor: '#ffffff',
-        arrowColor: 'orange',
+        arrowColor: 'rgb(231, 29, 53)', 
         disabledArrowColor: '#d9e1e8',
         monthTextColor: '#ffffff',
         indicatorColor: 'blue',
