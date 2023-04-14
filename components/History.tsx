@@ -54,7 +54,7 @@ export default function TestContainer({ navigation, route }) {
               key={link}
               onPress={() =>{
                 console.log(link)
-                navigation.navigate("History",{test: link, title: title})
+                navigation.navigate("Charts",{test: link, title: title})
               }} // pass the link to fetchData function
               style={{
                 backgroundColor: "#E71D35",

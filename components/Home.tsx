@@ -98,7 +98,7 @@ function HomeScreen({ navigation }) {
           <TouchableWithoutFeedback
             key={item.title}
             onPress={() => {
-              navigation.navigate("Test", { title: item.title });
+              navigation.navigate("History", { title: item.title });
             }}
             containerStyle={{ flex: 1 }}
             style={{ flex: 1 }}
