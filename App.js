@@ -6,8 +6,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import HomeScreen from './components/Home';
 import CalendarScreen from './components/Calendar';
-import HistoryScreen from './components/History';
-import TestScreen from './components/Test';
+import HistoryScreen from './components/Charts';
+import TestScreen from './components/History';
 
 
 const Drawer = createDrawerNavigator();
@@ -19,7 +19,6 @@ function CustomDrawerContent(props) {
     <DrawerContentScrollView {...props}>
       <CustomDrawerItem label="Home" to="Home" navigation={navigation} activeScreen={activeScreen} />
       <CustomDrawerItem label="Calendar" to="Calendar" navigation={navigation} activeScreen={activeScreen} />
-      <CustomDrawerItem label="History" to="History" navigation={navigation} activeScreen={activeScreen} />
     </DrawerContentScrollView>
   );
 }
@@ -81,8 +80,8 @@ export default function App() {
       >
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Calendar" component={CalendarScreen} />
-        <Drawer.Screen name="History" component={HistoryScreen} />
-        <Drawer.Screen name="Test" component={TestScreen} />
+        <Drawer.Screen name="History" component={TestScreen} />
+        <Drawer.Screen name="Charts" component={HistoryScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
