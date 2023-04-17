@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Din3",
-    "slug": "Din3",
+    "slug": "din-3",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.jonik00.Din3"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "78c578ee-1594-4be0-8b94-e995233062c2"
+      }
+    },
+    "owner": "ayrtonr"
   }
 }

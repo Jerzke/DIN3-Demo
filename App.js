@@ -1,34 +1,88 @@
-import React, { useEffect, useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { fetchData } from "./DataFetch";
-import Chart from "./Chart";
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
+import { Text, useWindowDimensions } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
-export default function App() {
-  const [data, setData] = useState([]);
+import HomeScreen from './components/Home';
+import CalendarScreen from './components/Calendar';
+import HistoryScreen from './components/Charts';
+import TestScreen from './components/History';
 
-  useEffect(() => {
-    fetchData().then((data) => {
-      setData(data);
-    });
-  }, []);
 
+const Drawer = createDrawerNavigator();
+
+function CustomDrawerContent(props) {
+  const { navigation, state } = props;
+  const activeScreen = state.routeNames[state.index];
   return (
-    <View style={styles.container}>
-      <Text style={{ color: "white", fontWeight: "bold", fontSize: 30 }}>
-        DIN-3
-        <Chart data={data} />
-      </Text>
-      <StatusBar style="auto" />
-    </View>
+    <DrawerContentScrollView {...props}>
+      <CustomDrawerItem label="Home" to="Home" navigation={navigation} activeScreen={activeScreen} />
+      <CustomDrawerItem label="Calendar" to="Calendar" navigation={navigation} activeScreen={activeScreen} />
+    </DrawerContentScrollView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "black",
-    alignItems: "center",
-    paddingTop: 55,
-  },
-});
+
+function CustomDrawerItem({ label, to, navigation, activeScreen }) {
+  const onPress = () => {
+    navigation.navigate(to);
+  };
+  const isActive = activeScreen === to;
+  return (
+    <DrawerItem
+      label={() => (
+        <Text
+          style={{
+            color: isActive ? "#000000" : "#E71D35",
+            fontSize: 20,
+            padding: 10,
+            fontWeight: isActive ? "bold" : "normal",
+          }}
+        >
+          {label}
+        </Text>
+      )}
+      onPress={onPress}
+      style={{ backgroundColor: isActive ? "#E71D35" : "#000000" }}
+    />
+  );
+}
+
+
+export default function App() {
+  const dimensions = useWindowDimensions();
+  const isLargeScreen = dimensions.width >= 768;
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator
+        defaultStatus="closed"
+        drawerContent={(props) => (
+          <LinearGradient
+            colors={['#000000', '#E71D35']}
+            style={{ flex: 1 }}
+            start={{ x: 1, y: 0.2 }}
+            end={{x:1, y:1}}
+          >
+            <CustomDrawerContent {...props} />
+          </LinearGradient>
+        )}
+        screenOptions={{
+          drawerType: isLargeScreen ? 'permanent' : 'back',
+          drawerStyle: isLargeScreen ? null : { width: '60%'},
+          headerStyle: { backgroundColor: '#E71D35',},
+          headerTintColor: '#000000',
+          swipeEnabled: true,
+          drawerType: 'front',
+          swipeEdgeWidth: 20,
+        }}
+        initialRouteName="Home"
+      >
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Calendar" component={CalendarScreen} />
+        <Drawer.Screen name="History" component={TestScreen} />
+        <Drawer.Screen name="Charts" component={HistoryScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}
