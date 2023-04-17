@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Din3",
-    "slug": "Din3",
+    "slug": "din-3",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -29,8 +29,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "9b6abb40-180c-47be-a433-11c11ee965f3"
+        "projectId": "78c578ee-1594-4be0-8b94-e995233062c2"
       }
-    }
+    },
+    "owner": "ayrtonr"
   }
 }
