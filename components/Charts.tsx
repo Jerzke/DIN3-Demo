@@ -11,10 +11,11 @@ import {
   VictoryZoomContainer,
   createContainer,
 } from "victory-native";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 interface Props {}
 
-export default function HistoryContainer({route}, props: Props) {
+export default function HistoryContainer({route, navigation}, props: Props) {
   const [data, setData] = useState([]);
   const { test, title } = route.params;
 
@@ -28,14 +29,30 @@ export default function HistoryContainer({route}, props: Props) {
   const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi");
 
   return (
+    <ScrollView
+      style={{
+        backgroundColor: "black"
+      }}
+    >
     <View
       style={{
         flex: 1,
-        alignItems: "center",
-        backgroundColor: "black",
-        padding: 50,
+        alignItems: "center"
       }}
     >
+      <TouchableOpacity
+        onPress={() =>{
+          navigation.navigate("History", {title: title})
+        }}
+        style={{
+          backgroundColor: "#E71D35",
+          borderRadius: 8,
+          padding: 10,
+          margin: 5,
+        }}
+      >
+        <Text>Back</Text>
+      </TouchableOpacity>
       <VictoryChart
         theme={VictoryTheme.material}
         containerComponent={
@@ -129,5 +146,6 @@ export default function HistoryContainer({route}, props: Props) {
         />
       </VictoryChart>
     </View>
+    </ScrollView>
   );
 }
