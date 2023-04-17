@@ -29,13 +29,11 @@ const NoteTaker: React.FC<{ selectedDate: string }> = ({ selectedDate }) => {
   const storeNote = async () => {
     try {
       if (existingNote.length > 0) {
-     
-        const newNotes = [...existingNote, { date: selectedDate, text: note }];
+        const newNotes = [...existingNote, { date: format(new Date(selectedDate), 'yyyy-MM-dd'), text: note }];
         await AsyncStorage.setItem(selectedDate, JSON.stringify(newNotes));
         setExistingNote(newNotes);
       } else {
-        
-        const newNote = [{ date: format(new Date(selectedDate), 'dd.MM.yyyy'), text: note }];
+        const newNote = [{ date: format(new Date(selectedDate), 'yyyy-MM-dd'), text: note }];
         await AsyncStorage.setItem(selectedDate, JSON.stringify(newNote));
         setExistingNote(newNote);
       }
@@ -57,13 +55,7 @@ const NoteTaker: React.FC<{ selectedDate: string }> = ({ selectedDate }) => {
       console.error(error);
     }
   };
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear();
-    return `${day}-${month}-${year}`;
-  };
+
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
