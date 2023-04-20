@@ -10,6 +10,7 @@ import HistoryScreen from './components/Charts';
 import TestScreen from './components/History';
 
 
+
 const Drawer = createDrawerNavigator();
 
 function CustomDrawerContent(props) {
@@ -19,6 +20,7 @@ function CustomDrawerContent(props) {
     <DrawerContentScrollView {...props}>
       <CustomDrawerItem label="Home" to="Home" navigation={navigation} activeScreen={activeScreen} />
       <CustomDrawerItem label="Calendar" to="Calendar" navigation={navigation} activeScreen={activeScreen} />
+      <CustomDrawerItem label="MultiChart" to="MultiChart" navigation={navigation} activeScreen={activeScreen} />
     </DrawerContentScrollView>
   );
 }
@@ -83,6 +85,8 @@ export default function App() {
         <Drawer.Screen name="Calendar" component={CalendarScreen} />
         <Drawer.Screen name="History" component={TestScreen} />
         <Drawer.Screen name="Charts" component={HistoryScreen} />
+
+
       </Drawer.Navigator>
     </NavigationContainer>
   );

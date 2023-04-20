@@ -1,9 +1,9 @@
 import * as d3 from "d3";
 
-const dataUrl = "https://din3-api-37sqsczq3q-ew.a.run.app/";
+const dataUrl = "http://localhost:3001/1";
 
-export const FetchData = async (fileID, title) => {
-  const response = await fetch(`${dataUrl}${title}/${fileID}`);
+export const fetchData = async () => {
+  const response = await fetch(dataUrl);
   const rawData = await response.text();
   const parser = d3.dsvFormat(";");
   const parsedData = parser.parse(rawData, (d) => ({
@@ -12,6 +12,6 @@ export const FetchData = async (fileID, title) => {
     speed: +d.speed,
     acceleration: +d.acceleration,
   }));
-  //console.log("parsed data", parsedData);
+  console.log("parsed data", parsedData);
   return parsedData;
 };
