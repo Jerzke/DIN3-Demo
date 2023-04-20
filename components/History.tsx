@@ -1,18 +1,44 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Button } from "react-native";
 import { FetchID } from "./IDFetch";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import { FetchData } from "./DataFetch"; //
+import { FetchData } from "./DataFetch"; 
 
 export default function TestContainer({ navigation, route }) {
   const { title } = route.params;
-  const [links, setLinks] = React.useState([]);
+  const [links, setLinks] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState([]);
 
   React.useEffect(() => {
     FetchID(title).then((data) => {
       setLinks(data);
     });
   }, [title]);
+
+  const handleOptionSelect = (option) => {
+    if (selectedOptions.length < 2) {
+      setSelectedOptions([...selectedOptions, option]);
+    } else {
+      setSelectedOptions([option]);
+    }
+  };
+
+  const handleNavigation = () => {
+    if (selectedOptions.length === 1) {
+      const { title, link } = selectedOptions[0];
+      navigation.navigate("Charts", { test: link, title });
+    } else if (selectedOptions.length === 2) {
+      const { title: title1, link: link1 } = selectedOptions[0];
+      const { title: title2, link: link2 } = selectedOptions[1];
+      navigation.navigate("Charts", {
+        test: link1,
+        title: title1,
+        test2: link2,
+        title2: title2,
+      });
+    }
+  };
+
 
 
   return (
@@ -54,7 +80,8 @@ export default function TestContainer({ navigation, route }) {
               key={link}
               onPress={() =>{
                 console.log(link)
-                navigation.navigate("Charts",{test: link, title: title})
+                handleOptionSelect({link, title})
+                
               }} // pass the link to fetchData function
               style={{
                 backgroundColor: "#E71D35",
@@ -69,7 +96,11 @@ export default function TestContainer({ navigation, route }) {
               </Text>
             </TouchableOpacity>
           ))}
-        </View>
+          
+          </View>
+        <TouchableOpacity onPress={handleNavigation}>
+          <Text style={{ color: "white" }}>to charting</Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );

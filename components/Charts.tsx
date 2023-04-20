@@ -9,26 +9,39 @@ import {
   VictoryVoronoiContainer,
   VictoryAxis,
   VictoryZoomContainer,
+  VictoryGroup,
   createContainer,
 } from "victory-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
+
 interface Props {}
 
 export default function HistoryContainer({route, navigation}, props: Props) {
-  const [data, setData] = useState([]);
+  const [data1, setData1] = useState([]);
+  const [data2, setData2] = useState([]);//data2 is green
   const { test, title } = route.params;
+  const { test2, } = route.params;
+  const [isLoading, setIsLoading] = useState(true);
+  
 
   
   useEffect(() => {
+    setIsLoading(true);
     FetchData(test, title).then((parsedData) => {
-      setData(parsedData);
-      console.log(test);
+      setData1(parsedData);
+      setIsLoading(false);
     });
-  }, [test]);
+    
+    FetchData(test2, title).then((parsedData) => {
+      setData2(parsedData);
+    });
+  }, [test, test2]);
+
   const VictoryZoomVoronoiContainer = createContainer("zoom", "voronoi");
 
   return (
+    
     <ScrollView
       style={{
         backgroundColor: "black"
@@ -43,6 +56,9 @@ export default function HistoryContainer({route, navigation}, props: Props) {
       <TouchableOpacity
         onPress={() =>{
           navigation.navigate("History", {title: title})
+          setData1([]);
+          setData2([]);
+          console.log("data cleared");
         }}
         style={{
           backgroundColor: "#E71D35",
@@ -53,55 +69,80 @@ export default function HistoryContainer({route, navigation}, props: Props) {
       >
         <Text>Back</Text>
       </TouchableOpacity>
-      <VictoryChart
-        theme={VictoryTheme.material}
-        containerComponent={
-          <VictoryZoomVoronoiContainer
-            //idk why this is redlined works fine on app?
-            labels={({ datum }) =>
-              `Distance (m): ${datum.distance}\nSpeed (m/s): ${
-                datum.speed
-              }\nTimestamp (s): ${(datum.timestamp - data[0].timestamp).toFixed(
-                1
-              )}`
-            }
-            labelComponent={
-              <VictoryTooltip
-                style={{ fill: "white" }}
-                flyoutStyle={{
-                  fill: "black",
-                  stroke: "#7d7d7d",
-                  strokeWidth: 2,
-                }}
+      
+      
+      {isLoading ? (
+          <Text style={{ color: "white" }}>Loading...</Text>
+        ) : (
+          <VictoryChart
+            theme={VictoryTheme.material}
+            containerComponent={
+              <VictoryZoomVoronoiContainer
+                labels={({ datum }) =>
+                  `Distance (m): ${datum.distance}\nSpeed (m/s): ${
+                    datum.speed
+                  }\nTimestamp (s): ${(datum.timestamp - data1[0].timestamp).toFixed(
+                    1
+                  )}`
+                }
+                labelComponent={
+                  <VictoryTooltip
+                    style={{ fill: "white" }}
+                    flyoutStyle={{
+                      fill: "black",
+                      stroke: "#7d7d7d",
+                      strokeWidth: 2,
+                    }}
+                  />
+                }
               />
             }
-          />
-        }
-      >
-        <VictoryAxis
-          label="Distance"
-          style={{ grid: { stroke: "#7d7d7d", strokeWidth: 1 } }}
-        />
-        <VictoryAxis
-          label="Speed"
-          dependentAxis
-          style={{ grid: { stroke: "#7d7d7d", strokeWidth: 1 } }}
-        />
+          >
+            <VictoryAxis
+              label="Distance"
+              style={{ grid: { stroke: "#7d7d7d", strokeWidth: 1 } }}
+            />
+            <VictoryAxis
+              label="Speed"
+              dependentAxis
+              style={{ grid: { stroke: "#7d7d7d", strokeWidth: 1 } }}
+            />
 
-        <VictoryLine
-          y="speed"
-          x="distance"
-          data={data}
-          style={{
-            data: {
-              stroke: "rgb(231, 29, 53)",
-              strokeWidth: 2,
-              strokeLinecap: "round",
-            },
-          }}
-        />
-      </VictoryChart>
+            <VictoryLine
+              y="speed"
+              x="distance"
+              data={data1}
+              style={{
+                data: {
+                  stroke: "rgb(231, 29, 53)",
+                  strokeWidth: 2,
+                  strokeLinecap: "round",
+                },
+              }}
+            />
+            <VictoryLine  //data2 is green
+              y="speed"
+              x="distance"
+              data={data2}
+              style={{
+                data: {
+                  stroke: "rgb(0, 255, 0)",
+                  strokeWidth: 2,
+                  strokeLinecap: "round",
+                },
+              }}
+            />
+          </VictoryChart>
+        )}
+ 
+    </View>
+    </ScrollView>
 
+  );
+}
+
+
+/*
       <VictoryChart
         theme={VictoryTheme.material}
         containerComponent={
@@ -135,7 +176,7 @@ export default function HistoryContainer({route, navigation}, props: Props) {
         <VictoryLine
           y="acceleration"
           x="timestamp"
-          data={data}
+          data={data1}
           style={{
             data: {
               stroke: "rgb(231, 29, 53)",
@@ -143,9 +184,7 @@ export default function HistoryContainer({route, navigation}, props: Props) {
               strokeLinecap: "round",
             },
           }}
-        />
+        />    
+        
       </VictoryChart>
-    </View>
-    </ScrollView>
-  );
-}
+*/

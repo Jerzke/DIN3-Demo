@@ -12,6 +12,6 @@ export const FetchData = async (fileID, title) => {
     speed: +d.speed,
     acceleration: +d.acceleration,
   }));
-  console.log("parsed data", parsedData);
+  //console.log("parsed data", parsedData);
   return parsedData;
 };
