@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, useWindowDimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { format } from 'date-fns';
 
@@ -11,6 +11,8 @@ interface Note {
 const NoteTaker: React.FC<{ selectedDate: string }> = ({ selectedDate }) => {
   const [note, setNote] = useState<string>('');
   const [existingNote, setExistingNote] = useState<Note[]>([]);
+  const dimensions = useWindowDimensions();
+  const isLargeScreen = dimensions.width >= 1200;
 
   useEffect(() => {
     const fetchNote = async () => {
@@ -64,8 +66,8 @@ const NoteTaker: React.FC<{ selectedDate: string }> = ({ selectedDate }) => {
       </Text>
       <TextInput
         style={{
-          height: 120,
-          width: 280,
+          height: isLargeScreen ? 200 : 120,
+          width: isLargeScreen ? 550 : 280,
           borderColor: 'rgb(56, 56, 56)',
           color: 'white',
           borderWidth: 1,

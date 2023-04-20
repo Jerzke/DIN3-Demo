@@ -1,4 +1,4 @@
-import { View, Text, Dimensions, ViewStyle, Image } from "react-native";
+import { View, Text, Dimensions, ViewStyle, Image, useWindowDimensions } from "react-native";
 import React from "react";
 import Animated, { interpolate } from "react-native-reanimated";
 import Carousel from "react-native-reanimated-carousel";
@@ -7,7 +7,9 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 function HomeScreen({ navigation }) {
   type TAnimationStyle = (value: number) => Animated.AnimateStyle<ViewStyle>;
   const width = Dimensions.get("window").width;
-  const itemSize = width / 4;
+  const dimensions = useWindowDimensions();
+  const isLargeScreen = dimensions.width >= 1200;
+  const itemSize = isLargeScreen ? dimensions.width / 5 : dimensions.width / 4;
   const centerOffset = width / 2 - itemSize / 2;
 
   const CAROUSEL_DATA = [
@@ -54,7 +56,9 @@ function HomeScreen({ navigation }) {
         [20, 25, 30, 25, 20]
       );
 
-      const scale = interpolate(
+      const scale = isLargeScreen ? interpolate( value,
+        [-1, -0.5, 0, 0.5, 1],
+        [0.4, 0.4, 0.8, 0.4, 0.4]) : interpolate(
         value,
         [-1, -0.5, 0, 0.5, 1],
         [0.6, 0.6, 1.1, 0.6, 0.6]
@@ -89,7 +93,7 @@ function HomeScreen({ navigation }) {
         height={itemSize}
         style={{
           width: width,
-          height: width / 2,
+          height: isLargeScreen ? dimensions.height / 1.5 : dimensions.height / 4,
           backgroundColor: "transparent",
         }}
         loop

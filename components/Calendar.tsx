@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, useWindowDimensions } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import NoteTaker from './notes';
 import * as Font from 'expo-font';
@@ -7,6 +7,8 @@ import * as Font from 'expo-font';
 export default function CalendarScreen() {
   const [selectedDate, setSelectedDate] = useState('');
   const [fontsLoaded, setFontsLoaded] = useState(false);
+  const dimensions = useWindowDimensions();
+  const isLargeScreen = dimensions.width >= 1200;
 
   const onDayPress = (day) => {
     setSelectedDate(day.dateString);
@@ -43,7 +45,7 @@ export default function CalendarScreen() {
             borderWidth: 1,
             borderColor: 'rgb(231, 29, 53)',
             height: 370,
-            width: 350,
+            width: isLargeScreen ? 550 : 350,
             backgroundColor: 'linear-gradient(to bottom, #57B2FF, #0086F8)',
           }}
           theme={{

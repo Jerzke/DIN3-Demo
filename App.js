@@ -52,7 +52,8 @@ function CustomDrawerItem({ label, to, navigation, activeScreen }) {
 
 export default function App() {
   const dimensions = useWindowDimensions();
-  const isLargeScreen = dimensions.width >= 768;
+  const isLargeScreen = dimensions.width >= 1200;
+  
   return (
     <NavigationContainer>
       <Drawer.Navigator
@@ -62,19 +63,19 @@ export default function App() {
             colors={['#000000', '#E71D35']}
             style={{ flex: 1 }}
             start={{ x: 1, y: 0.2 }}
-            end={{x:1, y:1}}
+            end={{ x: 1, y: 1 }}
           >
             <CustomDrawerContent {...props} />
           </LinearGradient>
         )}
         screenOptions={{
-          drawerType: isLargeScreen ? 'permanent' : 'back',
-          drawerStyle: isLargeScreen ? null : { width: '60%'},
-          headerStyle: { backgroundColor: '#E71D35',},
+          drawerType: isLargeScreen ? null : 'back',
+          drawerStyle: isLargeScreen ? { width: '25%' } : { width: '60%' },
+          swipeEnabled: isLargeScreen ? false : true,
+          headerStyle: { backgroundColor: '#E71D35' },
           headerTintColor: '#000000',
-          swipeEnabled: true,
-          drawerType: 'front',
-          swipeEdgeWidth: 20,
+          drawerType: isLargeScreen ? 'front' : 'front',
+          swipeEdgeWidth: isLargeScreen ? 0 : 50, 
         }}
         initialRouteName="Home"
       >
