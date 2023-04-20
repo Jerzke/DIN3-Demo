@@ -98,8 +98,26 @@ export default function TestContainer({ navigation, route }) {
           ))}
           
           </View>
-        <TouchableOpacity onPress={handleNavigation}>
-          <Text style={{ color: "white" }}>to charting</Text>
+        <TouchableOpacity onPress= {() =>{handleNavigation}}
+        style={{
+          flex: 1,
+          alignItems: "center",
+          backgroundColor: "black",
+          padding: 20,
+          }}
+          >
+          <Text style={{ 
+            color: "white",
+            fontSize: 15,
+            fontWeight: "bold",
+            backgroundColor: "#383838",
+            borderWidth: 1,
+            borderRadius: 8,
+            padding: 10,
+            }}
+            >
+            Compare
+          </Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
