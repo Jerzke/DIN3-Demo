@@ -23,6 +23,7 @@ export default function HistoryContainer({route, navigation}, props: Props) {
   const { test, title } = route.params;
   const { test2, } = route.params;
   const [isLoading, setIsLoading] = useState(true);
+
   
 
   
@@ -70,7 +71,21 @@ export default function HistoryContainer({route, navigation}, props: Props) {
         <Text>Back</Text>
       </TouchableOpacity>
       
-      
+      {test2 ? (
+      <>
+          <Text style={{color: 'white'}}>
+            {test} as red
+          </Text>
+          <Text style={{color: 'white'}}>
+            {test2} as green
+          </Text>
+      </>
+        ) : (
+          <Text style={{color: 'white'}}>
+            {test} as red
+          </Text>
+        )}
+
       {isLoading ? (
           <Text style={{ color: "white" }}>Loading...</Text>
         ) : (
@@ -134,7 +149,9 @@ export default function HistoryContainer({route, navigation}, props: Props) {
             />
           </VictoryChart>
         )}
- 
+  
+
+
     </View>
     </ScrollView>
 
