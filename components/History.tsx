@@ -77,29 +77,46 @@ export default function TestContainer({ navigation, route }) {
         >
           {links.map((link) => (
             <TouchableOpacity
-              key={link}
-              onPress={() =>{
-                console.log(link)
-                handleOptionSelect({link, title})
-                
-              }} // pass the link to fetchData function
-              style={{
-                backgroundColor: "#E71D35",
-                borderRadius: 8,
-                padding: 10,
-                margin: 10,
-                minWidth: 100,
-              }}
-            >
-              <Text style={{ color: "white", textAlign: "center" }}>
-                {link}
-              </Text>
-            </TouchableOpacity>
+            key={link}
+            onPress={() =>{
+              console.log(link)
+              handleOptionSelect({link, title})
+            }}
+            style={{
+              backgroundColor: selectedOptions.some(option => option.link === link) ? 'green' : '#E71D35',
+              borderRadius: 8,
+              padding: 10,
+              margin: 10,
+              minWidth: 100,
+            }}
+          >
+            <Text style={{ color: "white", textAlign: "center" }}>
+              {link}
+            </Text>
+          </TouchableOpacity>
           ))}
           
           </View>
-        <TouchableOpacity onPress={handleNavigation}>
-          <Text style={{ color: "white" }}>to charting</Text>
+        <TouchableOpacity onPress= {() =>{handleNavigation()} } 
+        style={{
+          flex: 1,
+          alignItems: "center",
+          backgroundColor: "black",
+          padding: 20,
+          }}
+          >
+          <Text style={{ 
+            color: "white",
+            fontSize: 15,
+            fontWeight: "bold",
+            backgroundColor: "#383838",
+            borderWidth: 1,
+            borderRadius: 8,
+            padding: 10,
+            }}
+            >
+            Compare
+          </Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
